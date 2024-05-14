@@ -1,0 +1,3796 @@
+{
+	"info": {
+		"_postman_id": "7eea6104-9464-4d08-a6a4-3fc25f312a30",
+		"name": "API Bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25253969"
+	},
+	"item": [
+		{
+			"name": "Authorization Testing",
+			"item": [
+				{
+					"name": "Get All users with no basic auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All users with only Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All users with only password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By User ID with no Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}user/:userId",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								":userId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "{{userId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By User ID with only username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}user/:userId",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								":userId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By User ID with only password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}user/:userId",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								":userId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By First Name with no Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users/username/:userFirstName",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"username",
+								":userFirstName"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userFirstName",
+									"value": "Numpy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By First Name with only UserName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users/username/:userFirstName",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"username",
+								":userFirstName"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userFirstName",
+									"value": "Numpy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By First Name with only Paasword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401 Unauthorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users/username/:userFirstName",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"username",
+								":userFirstName"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userFirstName",
+									"value": "Numpy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://api.postman.com/collections/25253969-7eea6104-9464-4d08-a6a4-3fc25f312a30?apikey=PMAK-66414215b717950001ed8874-6f600539836e98ed654bc0e581000324fd",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.postman.com/collections/25253969-7eea6104-9464-4d08-a6a4-3fc25f312a30?apikey=PMAK-6642ba706fada0000184e822-9e0205466854966c057a0a22ab9e3314b1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"postman",
+								"com"
+							],
+							"path": [
+								"collections",
+								"25253969-7eea6104-9464-4d08-a6a4-3fc25f312a30"
+							],
+							"query": [
+								{
+									"key": "apikey",
+									"value": "PMAK-6642ba706fada0000184e822-9e0205466854966c057a0a22ab9e3314b1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invalid Data Testing",
+			"item": [
+				{
+					"name": "Get invalid",
+					"item": [
+						{
+							"name": "Get User By invalid User ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Verify the message \",function(){\r",
+											"    pm.expect(response.message).to.eql(\"User with userId 25677677 not found!\")\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}user/:userId",
+									"host": [
+										"{{baseUrl}}user"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "25677677"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By User ID with invalid enpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}users/:userId",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By invalid First Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"\r",
+											"pm.test(\"Verify the message \", ()=>{\r",
+											"    pm.expect(response.message).to.eqls(\"User with userFirstName Ashgdggfygfh not found!\");\r",
+											"    });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}users/username/:userFirstName",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"path": [
+										"username",
+										":userFirstName"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userFirstName",
+											"value": "Ashgdggfygfh"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By First Name with invalid endpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}users/usernames/:userFirstName",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"path": [
+										"usernames",
+										":userFirstName"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userFirstName",
+											"value": "{{userFirstName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By First Name with invalid url",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://userserviceapi-a54ceee3346a.herokuapp.com/u/users/username/:userFirstName",
+									"protocol": "https",
+									"host": [
+										"userserviceapi-a54ceee3346a",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"u",
+										"users",
+										"username",
+										":userFirstName"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userFirstName",
+											"value": "{{userFirstName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All users invaild endpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}user",
+									"host": [
+										"{{baseUrl}}user"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All users invaild base url",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://userserviceapi-a54ceee3346a.herokuapp.com/users",
+									"protocol": "https",
+									"host": [
+										"userserviceapi-a54ceee3346a",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Post Invalid",
+					"item": [
+						{
+							"name": "Post invalid FirstName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"user FirstName is mandatory and should contains alphabets only\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN12\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767677678\",\r\n   \"user_email_id\":  \"nns24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post invalid LastName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"User Last Name is mandatory and should contains alphabets only\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN23\",\r\n   \"user_contact_number\":  \"6767677678\",\r\n   \"user_email_id\":  \"nns24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post invalid contact<10",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"Phone Number is required and should contains 10 numeric values only\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767\",\r\n   \"user_email_id\":  \"nns24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post invalid contact>10",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"Phone Number is required and should contains 10 numeric values only\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"67677575635354646\",\r\n   \"user_email_id\":  \"nns24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post invalid email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"User email Id is required and should be in proper email format\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767757563\",\r\n   \"user_email_id\":  \"nns224gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post invalid Plot no",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"Plot number should contain alphaNumeric values only\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767757563\",\r\n   \"user_email_id\":  \"nns224@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post existing Contact",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 409 Conflict\", function () {\r",
+											"    pm.response.to.have.status(409);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"User already exist with same contact number\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  1234567891,\r\n   \"user_email_id\":  \"nns224@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post existing email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 409 Conflict\", function () {\r",
+											"    pm.response.to.have.status(409);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"pm.test(\"Error message \",()=>{\r",
+											"    const message = \"User already exist with same email id\";\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  1234567834,\r\n   \"user_email_id\":  \"Numpy@gmail.com\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post with no body",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post with all empty strings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"\",\r\n   \"user_last_name\":  \"\",\r\n   \"user_contact_number\":  \"\",\r\n   \"user_email_id\":  \"\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"\",\r\n   \"Street\": \"\",\r\n   \"state\": \"\",\r\n    \"Country\": \"\",\r\n   \"zipCode\": \"\"\r\n }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post create with invalid endpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767677678\",\r\n   \"user_email_id\":  \"nns24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createuser",
+									"host": [
+										"{{baseUrl}}createuser"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post create with invalid Baseurl",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767677678\",\r\n   \"user_email_id\":  \"nns24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://userserviceapi-a54ceee3346a.herokuapp.com/createusers",
+									"protocol": "https",
+									"host": [
+										"userserviceapi-a54ceee3346a",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Put Invalid",
+					"item": []
+				},
+				{
+					"name": "Delete Invalid",
+					"item": [
+						{
+							"name": "Delete User with invalid endpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}deleteuse/:userId",
+									"host": [
+										"{{baseUrl}}deleteuse"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User with invalid url",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://userserviceapi-a54ceee3346a.herokuapp.com/deleteuser/:userId",
+									"protocol": "https",
+									"host": [
+										"userserviceapi-a54ceee3346a",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"deleteuser",
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User By User Name with invalid endpoints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}deleteuser/usernames/:userfirstname",
+									"host": [
+										"{{baseUrl}}deleteuser"
+									],
+									"path": [
+										"usernames",
+										":userfirstname"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userfirstname",
+											"value": "Numpy"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User By User Name with invalid baseurl",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404 Not Found\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://userserviceapi-a54ceee3346a.herokuapp.com/deleteuser/username/:userfirstname",
+									"protocol": "https",
+									"host": [
+										"userserviceapi-a54ceee3346a",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"deleteuser",
+										"username",
+										":userfirstname"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userfirstname",
+											"value": "Numpy"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Valid Data Testing",
+			"item": [
+				{
+					"name": "Post Operation",
+					"item": [
+						{
+							"name": "Post create a user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"const userid = response.user_id;\r",
+											"console.log(userid);\r",
+											"pm.collectionVariables.set('userId',userid);\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6766677678\",\r\n   \"user_email_id\":  \"nns2467@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post create a user using data driven",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"const userid = response.user_id;\r",
+											"console.log(userid);\r",
+											"pm.collectionVariables.set('userId',userid);\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"verify data \", ()=>{\r",
+											"    pm.expect(response.user_first_name).to.be.eql(pm.iterationData.get('firstname'));\r",
+											"    pm.expect(response.user_email_id).to.be.eql(pm.iterationData.get('email'));\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"{{firstname}}\",\r\n   \"user_last_name\":  \"{{lastname}}\",\r\n   \"user_contact_number\":  {{contact}},\r\n   \"user_email_id\":  \"{{email}}\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"{{plot}}\",\r\n   \"Street\": \"{{street}}\",\r\n   \"state\": \"{{state}}\",\r\n    \"Country\": \"{{country}}\",\r\n   \"zipCode\": {{zipcode}}\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Post create a user save user name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"const userFirstname = response.user_first_name;\r",
+											"console.log(userFirstname);\r",
+											"pm.collectionVariables.set('userFirstName',userFirstname);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"6767677688\",\r\n   \"user_email_id\":  \"nnss24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}createusers",
+									"host": [
+										"{{baseUrl}}createusers"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Operation",
+					"item": [
+						{
+							"name": "Get All users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"verify data \",()=>{\r",
+											"  const response = pm.response.json();\r",
+											"  pm.expect(response).to.be.an('array'); \r",
+											"  console.log(response.length);\r",
+											"  pm.expect(response.length).to.be.above(0);\r",
+											"  const product = response[0];\r",
+											"  console.log(product);\r",
+											"  pm.expect(product).to.be.an('object');\r",
+											"  console.log(product.user_id);\r",
+											"  pm.expect(product).to.haveOwnProperty('user_id');\r",
+											"  pm.expect(product.user_id).to.be.a('number');\r",
+											"})\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}users",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"query": [
+										{
+											"key": "country",
+											"value": "USA",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By User ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"verify user_id is created and also data type of it\",()=>{\r",
+											"  const response = pm.response.json();\r",
+											"  console.log(response);\r",
+											"  pm.expect(response).to.be.an('object');\r",
+											"  console.log(response.user_id);\r",
+											"  pm.expect(response).to.haveOwnProperty('user_id');\r",
+											"  pm.expect(response.user_id).to.be.a('number');\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}user/:userId",
+									"host": [
+										"{{baseUrl}}user"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By First Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"const response1 = response[0].user_first_name;\r",
+											"pm.test(\"Verify First Name \", ()=>{\r",
+											"    const name = pm.collectionVariables.get('userFirstName');\r",
+											"    console.log(name);\r",
+											"    console.log(response1);\r",
+											"    pm.expect(response1).to.eqls(name);\r",
+											"    });"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}users/username/:userFirstName",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"path": [
+										"username",
+										":userFirstName"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userFirstName",
+											"value": "{{userFirstName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user by same first names",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"console.log(response);\r",
+											"console.log(response.length);\r",
+											"//const response1 = response[0].user_first_name;\r",
+											"pm.test(\"Verify First Name \", ()=>{\r",
+											"    for (let i=0 ;i<response.length;i++){\r",
+											"    const response1 = response[i].user_first_name;\r",
+											"    console.log(response1);\r",
+											"    pm.expect(response1).to.eqls(\"NumpyNN\");\r",
+											"    }});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}users/username/:userFirstName",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"path": [
+										"username",
+										":userFirstName"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userFirstName",
+											"value": "{{userFirstName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Put Operation",
+					"item": [
+						{
+							"name": "Put update by userId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"userAddress\": {\r\n            \"addressId\": 331,\r\n            \"plotNumber\": \"P-100\",\r\n            \"street\": \"topstreet\",\r\n            \"state\": \"WA\",\r\n            \"country\": \"us\",\r\n            \"zipCode\": 98033\r\n        },\r\n        \"user_first_name\": \"Sherin\",\r\n        \"user_last_name\": \"Jose\",\r\n        \"user_contact_number\": 2344344393,\r\n        \"user_email_id\": \"sj93@gmail.com\"\r\n    }\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}updateuser/:userId",
+									"host": [
+										"{{baseUrl}}updateuser"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete Operation",
+					"item": [
+						{
+							"name": "Delete User By User ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}deleteuser/:userId",
+									"host": [
+										"{{baseUrl}}deleteuser"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify Delete by user id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"const response = pm.response.json();\r",
+											"pm.test(\"verify error message \", ()=>{\r",
+											"    const userid = pm.collectionVariables.get('userId');\r",
+											"    console.log(userid);\r",
+											"    const message =\"User not found with id: \" +userid;\r",
+											"    pm.expect(response.message).to.be.eqls(message);\r",
+											"\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}deleteuser/:userId",
+									"host": [
+										"{{baseUrl}}deleteuser"
+									],
+									"path": [
+										":userId"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User By User Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}deleteuser/username/:userfirstname",
+									"host": [
+										"{{baseUrl}}deleteuser"
+									],
+									"path": [
+										"username",
+										":userfirstname"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userfirstname",
+											"value": "{{userFirstName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify Delete User By User Name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"/*const response = pm.response.json();\r",
+											"pm.test(\"verify error message \", ()=>{\r",
+											"    const username = pm.collectionVariables.get('userFirstName');\r",
+											"    console.log(username);\r",
+											"    const message =\"User does not exist with name\"+\r",
+											"    pm.expect(response.message).to.have.string(message);\r",
+											"\r",
+											"})*/"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"console.clear();"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "api@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Numpy@gmail.com",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}deleteuser/username/:userfirstname",
+									"host": [
+										"{{baseUrl}}deleteuser"
+									],
+									"path": [
+										"username",
+										":userfirstname"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "userfirstname",
+											"value": "{{userFirstName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Schema validation",
+			"item": [
+				{
+					"name": "Post create a user Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"const response = pm.response.json();\r",
+									"const userveid = response.user_id;\r",
+									"pm.collectionVariables.set('userVer',userveid)\r",
+									"var schema = {\r",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"  \"title\": \"Generated schema for Root\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"userAddress\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"addressId\": {\r",
+									"          \"type\": \"number\"\r",
+									"        },\r",
+									"        \"plotNumber\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"street\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"state\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"country\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"zipCode\": {\r",
+									"          \"type\": \"number\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"addressId\",\r",
+									"        \"plotNumber\",\r",
+									"        \"street\",\r",
+									"        \"state\",\r",
+									"        \"country\",\r",
+									"        \"zipCode\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"user_id\": {\r",
+									"      \"type\": \"number\"\r",
+									"    },\r",
+									"    \"user_first_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_last_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_contact_number\": {\r",
+									"      \"type\": \"number\"\r",
+									"    },\r",
+									"    \"user_email_id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"creation_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"last_mod_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"userAddress\",\r",
+									"    \"user_id\",\r",
+									"    \"user_first_name\",\r",
+									"    \"user_last_name\",\r",
+									"    \"user_contact_number\",\r",
+									"    \"user_email_id\",\r",
+									"    \"creation_time\",\r",
+									"    \"last_mod_time\"\r",
+									"  ]\r",
+									"};\r",
+									"pm.test(\"schema validation \" , ()=>{\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"user_first_name\":  \"NumpyNN\",\r\n   \"user_last_name\":  \"NinjaNN\",\r\n   \"user_contact_number\":  \"1212121234\",\r\n   \"user_email_id\":  \"nnsninja24@gmail.org\",\r\n\r\n\"userAddress\": {\r\n   \"plotNumber\": \"pl-24\",\r\n   \"Street\": \"ninjasplace\",\r\n   \"state\": \"CT\",\r\n    \"Country\": \"USA\",\r\n   \"zipCode\": \"09868\"\r\n }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}createusers",
+							"host": [
+								"{{baseUrl}}createusers"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By User ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"verify user_id is created and also data type of it\",()=>{\r",
+									"  const response = pm.response.json();\r",
+									"  console.log(response);\r",
+									"  pm.expect(response).to.be.an('object');\r",
+									"  console.log(response.user_id);\r",
+									"  pm.expect(response).to.haveOwnProperty('user_id');\r",
+									"  pm.expect(response.user_id).to.be.a('number');\r",
+									"})\r",
+									"var schema = {\r",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r",
+									"  \"title\": \"Generated schema for Root\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"userAddress\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"addressId\": {\r",
+									"          \"type\": \"number\"\r",
+									"        },\r",
+									"        \"plotNumber\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"street\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"state\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"country\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"zipCode\": {\r",
+									"          \"type\": \"number\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"addressId\",\r",
+									"        \"plotNumber\",\r",
+									"        \"street\",\r",
+									"        \"state\",\r",
+									"        \"country\",\r",
+									"        \"zipCode\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"user_id\": {\r",
+									"      \"type\": \"number\"\r",
+									"    },\r",
+									"    \"user_first_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_last_name\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"user_contact_number\": {\r",
+									"      \"type\": \"number\"\r",
+									"    },\r",
+									"    \"user_email_id\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"creation_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"last_mod_time\": {\r",
+									"      \"type\": \"string\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"userAddress\",\r",
+									"    \"user_id\",\r",
+									"    \"user_first_name\",\r",
+									"    \"user_last_name\",\r",
+									"    \"user_contact_number\",\r",
+									"    \"user_email_id\",\r",
+									"    \"creation_time\",\r",
+									"    \"last_mod_time\"\r",
+									"  ]\r",
+									"};\r",
+									"pm.test(\"schema validation \" , ()=>{\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}user/:userId",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								":userId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All users Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"verify data \",()=>{\r",
+									"  const response = pm.response.json();\r",
+									"  pm.expect(response).to.be.an('array'); \r",
+									"  console.log(response.length);\r",
+									"  pm.expect(response.length).to.be.above(0);\r",
+									"  const product = response[0];\r",
+									"  console.log(product);\r",
+									"  pm.expect(product).to.be.an('object');\r",
+									"  console.log(product.user_id);\r",
+									"  pm.expect(product).to.haveOwnProperty('user_id');\r",
+									"  pm.expect(product.user_id).to.be.a('number');\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}users",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "USA",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By User ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "api@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Numpy@gmail.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}deleteuser/:userId",
+							"host": [
+								"{{baseUrl}}deleteuser"
+							],
+							"path": [
+								":userId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "{{userVer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://userserviceapi-a54ceee3346a.herokuapp.com/uap/"
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "userFirstName",
+			"value": ""
+		},
+		{
+			"key": "userVer",
+			"value": ""
+		}
+	]
+}
